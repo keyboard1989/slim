@@ -50,10 +50,22 @@ func RandI32SliceBetween(min int32, max int32, factor float64) []int32 {
 }
 
 func RandSortedStrings(cnt, leng int) []string {
-	rsts := make([]string, cnt)
+	keys := make(map[string]bool, cnt)
 
 	for i := 0; i < cnt; i++ {
-		rsts[i] = RandString(leng)
+		k := RandString(leng)
+		if _, ok := keys[k]; ok {
+			i--
+		} else {
+			keys[k] = true
+		}
+	}
+
+	rsts := make([]string, cnt)
+	j := 0
+	for i, _ := range keys {
+		rsts[j] = i
+		j++
 	}
 
 	sort.Strings(rsts)

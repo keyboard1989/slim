@@ -12,11 +12,12 @@ import (
 var flg *benchhelper.ReportCmdFlag
 
 func main() {
-	flg = benchhelper.InitCmdFlag()
-	getPresent()
-	getAbsent()
+	// flg = benchhelper.InitCmdFlag()
+	// getPresent()
+	// getAbsent()
 
-	memX()
+	// memX()
+	benchmark.GetFalsePositiveRate([]int{20000})
 
 }
 
